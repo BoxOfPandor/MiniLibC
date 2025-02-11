@@ -9,17 +9,16 @@ NAME = libasm.so
 ASM = nasm
 ASMFLAGS = -f elf64
 
-CC = gcc
-CFLAGS = -Wall -Wextra -shared
+LD = ld
+LDFLAGS = -shared
 
 SRCS = 	src/strlen.s
-
 OBJS = $(SRCS:.s=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(LD) $(LDFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.s
 	$(ASM) $(ASMFLAGS) $< -o $@
@@ -33,7 +32,7 @@ fclean: clean
 re: fclean all
 
 test: $(NAME)
-	$(CC) tests/main.c -o test_binary -L. -lasm
+	gcc tests/main.c -o test_binary -L. -lasm
 	LD_PRELOAD=./$(NAME) ./test_binary
 
 .PHONY: all clean fclean re test
