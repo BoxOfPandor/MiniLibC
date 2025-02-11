@@ -32,7 +32,7 @@ fclean: clean
 re: fclean all
 
 test: $(NAME)
-	gcc tests/main.c -o test_binary -L. -lasm
-	LD_PRELOAD=./$(NAME) ./test_binary
+	LD_LIBRARY_PATH=. $(CC) tests/main.c -o test_binary -L. -lasm
+	LD_LIBRARY_PATH=. LD_PRELOAD=./$(NAME) ./test_binary
 
 .PHONY: all clean fclean re test
