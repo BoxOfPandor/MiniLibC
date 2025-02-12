@@ -12,7 +12,7 @@ ASMFLAGS = -f elf64
 LD = ld
 LDFLAGS = -shared
 
-SRCS = 	src/strlen.s
+SRCS = 	$(wildcard src/*.s)
 OBJS = $(SRCS:.s=.o)
 
 all: $(NAME)
