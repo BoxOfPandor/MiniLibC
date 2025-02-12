@@ -38,5 +38,6 @@ obj/
 libasm.so
 
 # Test directories
-includes
-tests
+unit_tests
+*.gcda
+*.gcno
