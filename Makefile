@@ -12,8 +12,8 @@ ASMFLAGS = -f elf64
 LD = ld
 LDFLAGS = -shared
 
-SRCS = 	$(wildcard src/*.s)
-OBJS = $(SRCS:.s=.o)
+SRCS = src/*.asm
+OBJS = $(SRCS:.asm=.o)
 
 TEST_NAME = unit_tests
 TEST_SRCS = $(wildcard tests/*.c)
@@ -24,7 +24,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(LD) $(LDFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.s
+%.o: %.asm
 	$(ASM) $(ASMFLAGS) $< -o $@
 
 clean:
