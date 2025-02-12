@@ -15,6 +15,10 @@ LDFLAGS = -shared
 SRCS = 	$(wildcard src/*.s)
 OBJS = $(SRCS:.s=.o)
 
+TEST_NAME = unit_tests
+TEST_SRCS = $(wildcard tests/*.c)
+TEST_OBJS = $(TEST_SRCS:.c=.o)
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -25,6 +29,10 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(TEST_OBJS)
+	rm -f $(TEST_NAME)
+	rm -f *.gcno
+	rm -f *.gcda
 
 fclean: clean
 	rm -f $(NAME)
@@ -32,7 +40,7 @@ fclean: clean
 re: fclean all
 
 test: $(NAME)
-	LD_LIBRARY_PATH=. $(CC) tests/main.c -o test_binary -L. -lasm
-	LD_LIBRARY_PATH=. LD_PRELOAD=./$(NAME) ./test_binary
+	gcc -o $(TEST_NAME) $(TEST_SRCS) -L. -lasm -lcriterion --coverage
+	LD_LIBRARY_PATH=. ./$(TEST_NAME) --full-stats --verbose
 
 .PHONY: all clean fclean re test
