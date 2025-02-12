@@ -6,9 +6,9 @@
 ;
 
 section .text
-    global asm_strchr
+    global strchr
 
-asm_strchr:
+strchr:
     xor rax, rax
     mov rcx, rdi
     mov al, sil
