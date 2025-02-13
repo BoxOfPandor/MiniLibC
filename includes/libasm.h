@@ -15,11 +15,13 @@ size_t strlen(const char *s);
 char *strchr(const char *s, int c);
 char *strrchr(const char *s, int c);
 int strcmp(const char *a, const char *b);
+int strncmp(const char *a, const char *b, size_t n);
 
 // Mapping pour les tests
 #define asm_strlen strlen
 #define asm_strchr strchr
 #define asm_strrchr strrchr
 #define asm_strcmp strcmp
+#define asm_strncmp strncmp
 
 #endif
