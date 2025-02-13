@@ -39,7 +39,7 @@ fclean: clean
 
 re: fclean all
 
-test_run: $(NAME)
+tests_run: $(NAME)
 	gcc -o $(TEST_NAME) $(TEST_SRCS) -L. -lasm -lcriterion --coverage
 	LD_LIBRARY_PATH=. ./$(TEST_NAME)
 
