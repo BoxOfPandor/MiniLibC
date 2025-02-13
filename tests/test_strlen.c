@@ -21,3 +21,9 @@ Test(strlen_tests, empty_string)
     const char *str = "";
     cr_assert_eq(asm_strlen(str), strlen(str));
 }
+
+Test(strlen_tests, null_pointer)
+{
+    const char *str;
+    cr_assert_eq(asm_strlen(str), strlen(str));
+}
