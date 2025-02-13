@@ -12,7 +12,7 @@ ASMFLAGS = -f elf64
 LD = ld
 LDFLAGS = -shared
 
-SRCS = src/*.asm
+SRCS = $(wildcard src/*.asm)
 OBJS = $(SRCS:.asm=.o)
 
 TEST_NAME = unit_tests
@@ -39,7 +39,7 @@ fclean: clean
 
 re: fclean all
 
-test: $(NAME)
+test_run: $(NAME)
 	gcc -o $(TEST_NAME) $(TEST_SRCS) -L. -lasm -lcriterion --coverage
 	LD_LIBRARY_PATH=. ./$(TEST_NAME) --full-stats --verbose
 
