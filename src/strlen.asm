@@ -9,6 +9,8 @@ section .text
     global strlen
 
 strlen:
+    test rdi, rdi
+    jz .done
     xor rax, rax
 
 .loop:
