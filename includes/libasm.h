@@ -19,6 +19,10 @@ int strncmp(const char *a, const char *b, size_t n);
 void *memset(void *s, int c, size_t n);
 void *memcpy(void *dest, const void *src, size_t n);
 void *memmove(void *dest, const void *src, size_t n);
+int strcasecmp(const char *s1, const char *s2);
+char *strstr(const char *haystack, const char *needle);
+char *strpbrk(const char *s, const char *accept);
+size_t strcspn(const char *s, const char *reject);
 
 // Mapping pour les tests
 #define asm_strlen strlen
@@ -29,5 +33,9 @@ void *memmove(void *dest, const void *src, size_t n);
 #define asm_memset memset
 #define asm_memcpy memcpy
 #define asm_memmove memmove
+#define asm_strcasecmp strcasecmp
+#define asm_strstr strstr
+#define asm_strpbrk strpbrk
+#define asm_strcspn strcspn
 
 #endif
