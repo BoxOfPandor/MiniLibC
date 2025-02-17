@@ -16,6 +16,8 @@ char *strchr(const char *s, int c);
 char *strrchr(const char *s, int c);
 int strcmp(const char *a, const char *b);
 int strncmp(const char *a, const char *b, size_t n);
+void *memset(void *s, int c, size_t n);
+void *memcpy(void *dest, const void *src, size_t n);
 
 // Mapping pour les tests
 #define asm_strlen strlen
@@ -23,5 +25,7 @@ int strncmp(const char *a, const char *b, size_t n);
 #define asm_strrchr strrchr
 #define asm_strcmp strcmp
 #define asm_strncmp strncmp
+#define asm_memset memset
+#define asm_memcpy memcpy
 
 #endif
