@@ -40,9 +40,9 @@ fclean: clean
 re: fclean all
 
 unit_test:
-	gcc -o $(TEST_NAME) $(TEST_SRCS) -L. -lasm -lcriterion --coverage
+	gcc -o $(TEST_NAME) $(TEST_SRCS) -Wl,-rpath=. -L. -lasm -lcriterion --coverage
 
 tests_run: unit_test
-	LD_LIBRARY_PATH=. ./$(TEST_NAME)
+	./$(TEST_NAME)
 
 .PHONY: all clean fclean re tests_run unit_test

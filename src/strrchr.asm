@@ -7,7 +7,9 @@
 
 section .text
     global strrchr
+    global rindex
 
+rindex:
 strrchr:
     ; Initialize registers
     xor rax, rax

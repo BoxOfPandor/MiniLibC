@@ -7,7 +7,9 @@
 
 section .text
     global strchr
+    global index
 
+index:
 strchr:
     ; Initialize rax to 0 and set rcx to the starting address of the string (rdi)
     xor rax, rax
